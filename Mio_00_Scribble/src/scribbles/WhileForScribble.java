@@ -37,7 +37,7 @@ public class WhileForScribble {
 		// https://www.tutorialspoint.com/java/java_for_loop.htm
 		System.out.println("- ciclo FOR, stampa da 0 a 9");
 
-		for (int k = 0; k < 10; k++) {
+		for (int k = 0;   k < 10;    k++) {
 			System.out.println(k);
 		}
 
@@ -50,9 +50,13 @@ public class WhileForScribble {
 		
 		// contatore m va da 0 a lunghezzaArray
 		int lunghezzaArray = arrayStringhe.length;
-		for (int m = 0; m < lunghezzaArray; m++) {
-			String valorecorrente = arrayStringhe[m];
+		
+		for (int m = 0;  m < lunghezzaArray;  m++) {
+			
+			String valorecorrente = arrayStringhe[m];		
+			
 			System.out.println("(m=" + m + ") => "+ valorecorrente);
+			
 		}
 		
 		delimiter();
@@ -62,7 +66,9 @@ public class WhileForScribble {
 		System.out.println("- ciclo FOREACH, stampa Array da 'zero' a 'nove'");
 		// contatore? lunghezza? => fa tutto da solo
 		for (String valoreCorrente2 : arrayStringhe) {
+			
 			System.out.println(valoreCorrente2);
+			
 		}
 		
 		

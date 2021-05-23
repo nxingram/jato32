@@ -12,8 +12,10 @@ public class EsempioOverload {
 
 		//ordina(a, b);
 		for (int i=0 ; i < voti.length; i++) {
-			ordinato[i]=voti[i];
+			ordinato[i]=voti[i]; // copiato l'array voti nell'array ordinato
 		}
+		
+		// ordina voti e ordina restituisce true o false
 		while(ordina(voti)) {
 			System.out.println("riprovo");
 		}
@@ -29,7 +31,9 @@ public class EsempioOverload {
 		}
 
 	}
-											//0 , 1 //length = 2; 
+	
+	// OVERLOAD DEL METODO: + versioni, cambiano i parametri
+	//0 , 1 //length = 2; 
 	private static boolean ordina(int[] voti) {//a,b, b, a, 23, 45, 56, 2, 9
 		boolean risposta = false;
 		boolean guardia = false;
@@ -56,7 +60,7 @@ public class EsempioOverload {
 			System.out.println("I numeri " + a + " e " + b);
 			System.out.println("sono già ordinati");
 			return false;
-		} else {
+		} else { // a > b
 			System.out.println("I numeri " + a + " e " + b);
 			System.out.println("NON sono ordinati");
 			return true;

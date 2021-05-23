@@ -9,19 +9,22 @@ public class RegistroTest {
 		Studente[] arrayStudenti = DBStudenti.studenti;
 		stampaArrayStudenti(arrayStudenti, "" + 0);
 
-		ordinaIncompleto(arrayStudenti);		
+//		ordinaIncompleto(arrayStudenti);		
 //		ordinaMio(arrayStudenti);		
 //
 //		ordinaMioVerboso(arrayStudenti);
 //		ordinaMioVerboso(arrayStudenti);		
 //		ordinaMioVerboso(arrayStudenti);		
 //
-//		// automatizzato con ciclo while e continua
-//		boolean continua = true;
-//		while (continua) {
-//			continua = ordinaMioVerboso(arrayStudenti);
-//			System.out.println("continua=" + continua + "\n"+"======================="+"\n");
-//		}
+		// automatizzato con ciclo while e continua
+		boolean continua = true;
+		
+		while (continua) {
+			
+			continua = ordinaMioVerboso(arrayStudenti);
+			
+			System.out.println("continua=" + continua + "\n"+"======================="+"\n");
+		}
 
 	}
 
@@ -57,7 +60,7 @@ public class RegistroTest {
 		int nCicliFor = studenti.length;
 
 		// posso bloccarlo prima manualmente
-		//nCicli = 4;	
+//		nCicliFor = 2;	
 
 		for (int i = 0; i < nCicliFor; i++) {
 
@@ -97,7 +100,7 @@ public class RegistroTest {
 		int nCicliFor = studenti.length;
 
 		// lo blocco prima
-//		nCicli = 4;	
+//		nCicliFor = 2;	
 
 		System.out.println("nCicliFor=" + nCicliFor + "   (lunghezza dell'array)");
 
