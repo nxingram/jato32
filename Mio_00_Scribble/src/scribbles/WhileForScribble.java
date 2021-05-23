@@ -2,11 +2,16 @@ package scribbles;
 
 
 
+
 public class WhileForScribble {
 
+	/**
+	 * <a href=https://www.tutorialspoint.com/java/java_loop_control.htm />Java - Loop Control</a>
+	 */
 	public static void main(String[] args) {
 
 		// -----------------------------------
+		// https://www.tutorialspoint.com/java/java_while_loop.htm
 		System.out.println("- ciclo WHILE, stampa da 0 a 9");
 		int i = 0;
 		while (i < 10) {
@@ -17,9 +22,11 @@ public class WhileForScribble {
 		delimiter();
 
 		// -----------------------------------
+		// https://www.tutorialspoint.com/java/java_do_while_loop.htm
 		System.out.println("- ciclo DO-WHILE, stampa da 0 a 9");
 		int j = 0;
-		do {
+		do { 
+			//primo blocco di codice viene sempre eseguito almeno una volta!
 			System.out.println(j);
 			j++;
 		} while (j < 10);
@@ -27,6 +34,7 @@ public class WhileForScribble {
 		delimiter();
 
 		// -----------------------------------
+		// https://www.tutorialspoint.com/java/java_for_loop.htm
 		System.out.println("- ciclo FOR, stampa da 0 a 9");
 
 		for (int k = 0; k < 10; k++) {
