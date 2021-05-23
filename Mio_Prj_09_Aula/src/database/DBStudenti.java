@@ -8,7 +8,11 @@ public class DBStudenti {
 			new Studente("Alessandro", "Spanu"),
 			new Studente("Andrea", "Fagone"),
 			new Studente("Elena", "Bosio"),
-			new Studente("Rebecca", "ciglieri"),
+			new Studente("Rebecca", "Ciglieri"),
+			
+			new Studente("Giacomo", "Zocchi"),
+			new Studente("Gilberto", "Garrone"),
+			new Studente("Emanuele", "Anzaldi"),
 	};
 	
 	

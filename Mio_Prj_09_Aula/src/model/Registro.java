@@ -2,6 +2,7 @@ package model;
 
 import java.util.Scanner;
 
+
 public class Registro {
 
 	private Studente[] studenti;
@@ -98,6 +99,8 @@ public class Registro {
 		//6 finche arrivo all'ultima, quindi esco
 		//ripeto questo ciclo finché una var boolean mi dice che è tutto ordinato
 	}
+	
+
 	
 	
 }
