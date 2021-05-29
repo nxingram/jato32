@@ -1,7 +1,7 @@
 package view;
 
+import controller.Playlist;
 import model.ClipVideo;
-import model.Playlist;
 
 public class ProvaEsercizio {
 

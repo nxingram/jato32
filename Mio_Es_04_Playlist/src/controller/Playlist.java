@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.ClipVideo;
 import java.util.ArrayList;
 
 public class Playlist {
