@@ -12,15 +12,16 @@ public class TestContoCorrente {
 		// test creazione conto corrente
 		ContoCorrente cc = new ContoCorrente();
 		
-		// test aggiungi movimento
+		// test versamento
 		double versamento = 200.0;
 		cc.versamento(versamento);
 		
+		// test prelievo
 		double prelievo = 50.0;		
 		cc.prelievo(prelievo);
 		
 		
-		// test stampa movimnti
+		// test stampa movimenti
 		ArrayList<Movimento> movimenti = cc.getMovimenti();
 		for (Movimento movimento : movimenti) {
 			System.out.println(movimento);
