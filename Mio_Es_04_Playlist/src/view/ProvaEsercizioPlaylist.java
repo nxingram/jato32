@@ -3,7 +3,7 @@ package view;
 import controller.Playlist;
 import model.ClipVideo;
 
-public class ProvaEsercizio {
+public class ProvaEsercizioPlaylist {
 
 	public static String descriviClipVideo(ClipVideo c) {
 		return "VIDEO " + c.getTitolo() + " (" + c.getMinuti() + ":" + c.getSecondi() + ")";
