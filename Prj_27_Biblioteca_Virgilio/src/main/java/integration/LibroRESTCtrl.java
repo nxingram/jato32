@@ -30,12 +30,14 @@ public class LibroRESTCtrl extends HttpServlet {
 		response.setContentType("application/json");
 		
 		// traformo i dati in formato json
-		JSONArray json = new JSONArray();
-		for (String titolo : libroService.getTitoli()) {
-			JSONObject t = new JSONObject();
-			t.put("titolo", titolo);
-			json.put(t);
-		}
+//		JSONArray json = new JSONArray();
+//		for (String titolo : libroService.getTitoli()) {
+//			JSONObject t = new JSONObject();
+//			t.put("titolo", titolo);
+//			json.put(t);
+//		}
+		
+		JSONArray json = new JSONArray(libroService.getTitoli());
 		
 		// restituisco i dati a javascript
 		response.getWriter().append(json.toString());
