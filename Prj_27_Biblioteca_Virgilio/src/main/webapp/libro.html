@@ -13,10 +13,8 @@
 
 
 
-
-
 <script>
-
+	// REST
     const LIBRI = document.getElementById('libri');
     const URL = 'http://localhost:8080/Prj_27_Biblioteca_Virgilio/api/libri';
 
@@ -24,7 +22,7 @@
 
         for (const titolo of titoli) {
             let li = document.createElement('li');
-            li.innerText = titolo.titolo;
+            li.innerText = titolo;
             LIBRI.appendChild(li);
 
             console.log(titolo);

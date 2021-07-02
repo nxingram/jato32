@@ -11,10 +11,10 @@ import java.sql.SQLException;
  *
  */
 public class DB {
-	private final String DB_NAME = "Its2020";
+	private final String DB_NAME = "generation";
 	private final String HOST = "jdbc:mysql://localhost:3306/" + DB_NAME + "?autoReconnect=true&useSSL=false";// host completo
-	private final String USER = "Its2020";
-	private final String PASS = "Its2020";
+	private final String USER = "allen";
+	private final String PASS = "allen";
 	
 	
 	private Connection conn = null;// è la connessione al db

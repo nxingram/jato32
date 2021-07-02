@@ -16,12 +16,17 @@
 <tr><th>titolo</th></tr>
 
 <% 
+// MVC
 // leggo i dati che mi ha passato la servlet dentro la request
+
+
 Set<String> libri = (Set<String>) request.getAttribute("libri"); %>
 
 <% for(String libro : libri){ %>
 	<tr><td><%=libro %></td></tr>
 <%} %>
+
+
 
 </table>
 
