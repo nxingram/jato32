@@ -34,7 +34,7 @@ public class AlimentiREST extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Vuoi ricevere tutti gli alimenti");
 		
-		List<Alimento> alimenti = this.service.findAll(); // prende dati dal server
+		List<Alimento> alimenti = this.service.findAll(); // prende i dati dal service
 		
 		JSONArray json = new JSONArray(alimenti);// trasforma in json
 		
