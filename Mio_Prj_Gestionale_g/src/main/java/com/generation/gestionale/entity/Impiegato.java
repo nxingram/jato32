@@ -102,6 +102,30 @@ public class Impiegato {
 		this.rifTo = rifTo;
 	}
 
+	public BigDecimal getStipendio() {
+		return stipendio;
+	}
+
+	public void setStipendio(BigDecimal stipendio) {
+		this.stipendio = stipendio;
+	}
+
+	public Ufficio getUfficio() {
+		return ufficio;
+	}
+
+	public void setUfficio(Ufficio ufficio) {
+		this.ufficio = ufficio;
+	}
+
+	public List<Ordine> getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(List<Ordine> ordini) {
+		this.ordini = ordini;
+	}
+
 	@Override
 	public String toString() {
 		return "Impiegato [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", ruolo=" + ruolo + ", rifTo="

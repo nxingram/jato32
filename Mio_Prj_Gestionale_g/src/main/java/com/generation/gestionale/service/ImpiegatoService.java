@@ -20,4 +20,9 @@ public class ImpiegatoService implements IImpiegatoService {
 		return _rImpiegato.findAll();
 	}
 
+	@Override
+	public Impiegato addOne(Impiegato i) {
+		return _rImpiegato.save(i);
+	}
+
 }
