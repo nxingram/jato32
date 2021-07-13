@@ -14,7 +14,7 @@ import com.generation.gestionale.service.iservice.IUfficioService;
 
 @RestController
 @RequestMapping("/api")
-public class ImpiegatoRest {
+public class ImpiegatoRestCtrl {
 
 	@Autowired
 	private IImpiegatoService _sImpiegato;
