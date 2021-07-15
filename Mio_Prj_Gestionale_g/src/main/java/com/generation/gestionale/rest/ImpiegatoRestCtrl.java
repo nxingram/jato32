@@ -1,6 +1,7 @@
 package com.generation.gestionale.rest;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import com.generation.gestionale.service.iservice.IImpiegatoService;
 import com.generation.gestionale.service.iservice.IUfficioService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/impiegato")
 public class ImpiegatoRestCtrl {
 
 	@Autowired
@@ -22,8 +23,8 @@ public class ImpiegatoRestCtrl {
 	@Autowired
 	private IUfficioService _sUfficio;
 	
-	@GetMapping("/new")
-	public Impiegato addImpiegato() {
+	@GetMapping("/prova-new")
+	public Impiegato provaAddImpiegato() {
 		
 		// creo 1 impiegato di prova
 		Impiegato i = new Impiegato();
@@ -43,5 +44,10 @@ public class ImpiegatoRestCtrl {
 		
 		// salvo nuovo utente e lo restituisco via json
 		return _sImpiegato.addOne(i);
+	}
+	
+	@GetMapping("")
+	public List<Impiegato> allImpiegati() {
+		return _sImpiegato.findAll();
 	}
 }

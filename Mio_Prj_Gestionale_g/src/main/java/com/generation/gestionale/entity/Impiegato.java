@@ -41,6 +41,10 @@ public class Impiegato {
 	@JoinColumn(name = "rif_to", referencedColumnName = "id") // relazione ricorsiva con "id" di questa tabella
 	private Impiegato rifTo;
 
+	/**
+	 * JsonIgnore nasconde lo stipendio quando restituisco il json tramite api rest
+	 */
+//	@JsonIgnore
 	@DecimalMax(value = "9999.99")
 	private BigDecimal stipendio;
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<title>Impiegato</title>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="/components/navbar">navbar.html</div>
+		
+		<h2>Elenco Impiegati</h2>
+		<div class="card" style="width: 400px" th:each="imp : ${impiegati}">
+			<!-- 			<img class="card-img-top" src="img_avatar1.png" alt="Card image" -->
+			<!-- 				style="width: 100%"> -->
+			<div class="card-body">
+				<h4 class="card-title"
+					th:text="${imp.cognome} + ' ' + ${imp.nome}">cognome nome</h4>
+				<p class="card-text">
+					ruolo: <span th:text="${imp.ruolo}"></span>
+				</p>
+				<p class="card-text">
+					stipendio: <span th:text="${imp.stipendio}"></span>
+				</p>
+				<p class="card-text">
+					ufficio: <span th:text="${imp.ufficio.nome}"></span>
+				</p>
+				<p class="card-text" th:if="${imp.rifTo != null}">
+					referente: <span
+						th:text="${imp.rifTo.cognome}+' '+${imp.rifTo.nome}"></span>
+				</p>
+				<a href="#" class="btn btn-primary">TODO: Elimina</a>
+			</div>
+		</div>
+		<br>
+
+	</div>
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+</body>
+</html>
