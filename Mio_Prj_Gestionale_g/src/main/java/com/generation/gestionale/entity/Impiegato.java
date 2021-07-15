@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,12 +29,15 @@ public class Impiegato {
 	/**
 	 * validation
 	 */
+	@NotBlank
 	@Size(max = 50, message = "troppo lungo")
 	private String nome;
 
+	@NotBlank
 	@Size(max = 50, message = "troppo lungo")
 	private String cognome;
 
+	@NotBlank
 	@Size(max = 20, message = "troppo lungo")
 	private String ruolo;
 

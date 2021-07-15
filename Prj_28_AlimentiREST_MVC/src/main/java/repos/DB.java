@@ -13,8 +13,8 @@ import java.sql.SQLException;
 public class DB {
 	private final String DB_NAME = "generation";
 	private final String HOST = "jdbc:mysql://localhost:3306/" + DB_NAME + "?autoReconnect=true&useSSL=false";// host completo
-	private final String USER = "allen";
-	private final String PASS = "allen";
+	private final String USER = "app_generation";
+	private final String PASS = "generation_2021!?";
 	
 	
 	private Connection conn = null;// è la connessione al db

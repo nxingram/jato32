@@ -15,8 +15,8 @@ public class DB {
 
 	private final String DB_NAME = "generation";
 	private final String HOST = "jdbc:mysql://localhost:3306/" + DB_NAME;
-	private final String USER = "allen";
-	private final String PASS = "allen";
+	private final String USER = "app_generation";
+	private final String PASS = "generation_2021!?";
 	
 	private Connection conn = null; //connessione al db
 //	private Statement stat = null; //contenitore di istruzioni

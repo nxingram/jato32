@@ -1,6 +1,7 @@
 package com.generation.gestionale.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,22 @@ public class ImpiegatoService implements IImpiegatoService {
 	public Impiegato addOne(Impiegato i) {
 		return _rImpiegato.save(i);
 	}
+	
+	@Override
+	public Impiegato findByID(Integer id) {
+		try {			
+			return _rImpiegato.findById(id).get();
+		} catch (NoSuchElementException e) {
+			return null;
+		}
+	}
+
+	@Override
+	public void delImpiegato(Impiegato imp) {
+		_rImpiegato.delete(imp);		
+	}
+
+	
+	
 
 }

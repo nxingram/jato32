@@ -7,4 +7,6 @@ import com.generation.gestionale.entity.Impiegato;
 public interface IImpiegatoService {
 	List<Impiegato> findAll();
 	Impiegato addOne(Impiegato i);
+	Impiegato findByID(Integer id);
+	void delImpiegato(Impiegato imp);
 }

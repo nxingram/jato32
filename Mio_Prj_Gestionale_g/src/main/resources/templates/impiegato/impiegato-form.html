@@ -1,15 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-<title>Impiegato</title>
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/components/head"></head>
 <body>
 	<div class="container">	
 		<div th:replace="/components/navbar">navbar.html</div>
@@ -45,7 +37,7 @@
 	      <br/>
 	      
 	      <label for="rifTo" class="form-label">Riferimento: </label>
-	      <select th:field="*{rifTo}" name="rifTo"  class="form-control">
+	      <select th:field="*{rifTo}" name="rifTo"  class="form-control form-select">
 	      	<option value=""/>
 	        <option th:each="imp : ${impiegati}"
 	                th:value="${imp.id}"
@@ -63,7 +55,7 @@
 	      <br/>
 	      
 	      <label for="ufficio" class="form-label">Ufficio: </label>    
-	      <select th:field="*{ufficio}" name="ufficio"  class="form-control">
+	      <select th:field="*{ufficio}" name="ufficio"  class="form-control form-select">
 	        <option th:each="uf : ${uffici}"
 	                th:value="${uf.id}"
 	                th:text="${uf.nome}"
@@ -75,10 +67,6 @@
 	    </form>
     </div>
 
-	<!-- Option 1: Bootstrap Bundle with Popper -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-		crossorigin="anonymous"></script>
+	<script th:replace="/components/footer"></script>
 </body>
 </html>

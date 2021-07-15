@@ -1,23 +1,19 @@
 package com.generation.gestionale.mvc;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.generation.gestionale.entity.Impiegato;
-import com.generation.gestionale.entity.Ufficio;
 import com.generation.gestionale.service.iservice.IImpiegatoService;
 import com.generation.gestionale.service.iservice.IUfficioService;
 
@@ -28,7 +24,7 @@ import com.generation.gestionale.service.iservice.IUfficioService;
  */
 @Controller
 @RequestMapping("/mvc/impiegato")
-public class ImpiegatoCtrl {
+public class ImpiegatoMvcCtrl {
 
 	@Autowired
 	private IImpiegatoService _sImpiegato;
@@ -59,7 +55,7 @@ public class ImpiegatoCtrl {
 	 * @return
 	 */
 	@PostMapping
-	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, BindingResult errors, Model model) {
+	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, Errors errors, Model model) {
 		if (errors.hasErrors()) {
 			// se ho errori riapro il form e visualizzo gli errori
 			return "/impiegato/impiegato-form";
@@ -80,6 +76,27 @@ public class ImpiegatoCtrl {
 	@GetMapping("/aggiungi")	
 	public String addImpiegatoForm(@ModelAttribute Impiegato imp, Model model) {
 		return "/impiegato/impiegato-form";
+	}
+	
+	/**
+	 * PathVariable : leggo id da percorso url
+	 * @param id : dell'impiegato da cancellare
+	 * @return pagina di messaggio: errore o cancellato correttamente
+	 */
+	@GetMapping("/delete/{id}")
+	public String delImpiegato(@PathVariable Integer id, Model model) {
+		// cerco se impiegato è presente su db
+		var imp = _sImpiegato.findByID(id);
+		if(imp == null) { 
+			// impiegato id non esiste
+			model.addAttribute("message", "Impiegato non presentre su database");
+		}else {
+			// esiste, cancello
+			_sImpiegato.delImpiegato(imp);			
+			model.addAttribute("message", "Impiegato cancellato correttamente");
+		}
+		
+		return "/common/message";
 	}
 	
 	/**
