@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Biblioteca</title>
+<style>
+#elenco {width: 60%;border-right: 1px solid red;float:left;}
+#scheda {width: 35%;float:left; border:1px solid blue;}
+</style>
+
+</head>
+<body>
+
+	<a href="index.html">Home</a>
+	<h1>Elenco libri</h1>
+	
+<table id="elenco">
+  <tr>
+    <th>Titolo</th>
+    <th>Editore</th>
+  </tr>
+</table>
+
+<div id="scheda"></div>
+
+<script>
+
+	const tabella = document.getElementById("elenco");
+	const scheda = document.getElementById("scheda");
+	
+	const URL = "/api/libri";
+
+	fetch(URL).then(j => j.json()).then(libri =>
+    {
+    	for(let libro of libri){//scorro l'intera la collezione
+    		let tr = document.createElement('tr');//creo la riga
+    		let td = document.createElement('td');//creo la cella
+    		td.innerHTML = libro.titolo;//metto il valore nella cella
+			td.onclick = function () {
+				findOne(libro.id);
+			};
+			tr.appendChild(td);//aggiungo la cella alla riga
+			
+			let td2 = document.createElement('td');//creo la cella
+			td2.innerHTML = libro.editore_id;//metto il valore nella cella
+			
+			tr.appendChild(td2);//aggiungo la cella alla riga
+			
+			tabella.appendChild(tr);//aggiungo la riga alla tabella
+			
+		}
+	}
+	
+	);
+
+	function findOne(id) {
+		
+		fetch(URL+"/"+id).then(lj => lj.json()).then(libro => {
+
+			let output = '';
+
+			output += '<h1>' + libro.titolo + '</h1>';
+			output += '<h1>' + libro.prezzo + '</h1>';
+			output += '<h1>' + libro.pagine + '</h1>';
+			
+			scheda.innerHTML = output;
+
+
+		});
+
+	}
+
+</script>
+
+	
+</body>
+</html>

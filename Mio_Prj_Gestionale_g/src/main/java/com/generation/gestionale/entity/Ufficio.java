@@ -73,7 +73,9 @@ public class Ufficio {
 
 	@Override
 	public String toString() {
-		return "Ufficio [id=" + id + ", nome=" + nome + ", luogo_id=" + luogo_id + "]";
+		return "Ufficio [id=" + id + ", nome=" + nome + ", luogo_id=" + luogo_id + ", impiegato=" + impiegato + "]";
 	}
+
+
 
 }
