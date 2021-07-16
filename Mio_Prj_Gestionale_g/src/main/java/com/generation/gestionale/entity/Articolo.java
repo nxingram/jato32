@@ -50,7 +50,7 @@ public class Articolo {
 
 	/**
 	 * necessario per la relazione molti a molti e terza tabella relazionale <br>
-	 * mappedBy: nome della tabella di questa entity <br>
+	 * mappedBy: nome della proprietà (foreign key) della classe corrispondente (OrdineDettaglio.articolo)<br>
 	 * JsonIgnore: non converte in json questa proprietà, che altrimenti va in loop
 	 * infinito
 	 */

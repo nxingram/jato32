@@ -31,7 +31,7 @@ public class Ufficio {
 
 	/**
 	 * necessario per la relazione con Impiegato <br>
-	 * mappedBy: nome della tabella di questa entity <br>
+	 * mappedBy: nome della proprietà (foreign key) della classe corrispondente (Impiegato.ufficio)<br>
 	 * JsonIgnore: non converte in json questa proprietà, che altrimenti va in loop
 	 * infinito
 	 */

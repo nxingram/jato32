@@ -59,7 +59,7 @@ public class Cliente {
 	
 	/**
 	 * necessario per la relazione con Ordini <br>
-	 * mappedBy: nome della tabella di questa entity <br>
+	 * mappedBy: nome della proprietà (foreign key) della classe corrispondente (Ordine.cliente)<br>
 	 * JsonIgnore: non converte in json questa proprietà, che altrimenti va in loop
 	 * infinito
 	 */
