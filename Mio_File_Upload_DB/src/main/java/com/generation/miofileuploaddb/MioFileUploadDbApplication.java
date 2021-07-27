@@ -1,17 +1,18 @@
-package com.generation.fileupload;
+package com.generation.miofileuploaddb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * Tutorial <br>
- * https://www.codejava.net/frameworks/spring-boot/spring-boot-file-upload-tutorial
+ * https://www.bezkoder.com/spring-boot-upload-file-database/
  *
  */
 @SpringBootApplication
-public class FileUploadApplication {
+public class MioFileUploadDbApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FileUploadApplication.class, args);
+		SpringApplication.run(MioFileUploadDbApplication.class, args);
 	}
 
 }
