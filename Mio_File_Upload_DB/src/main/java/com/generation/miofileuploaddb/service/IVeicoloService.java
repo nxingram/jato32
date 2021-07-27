@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.generation.miofileuploaddb.Dto.VeicoloDto;
+import com.generation.miofileuploaddb.dto.VeicoloDto;
 import com.generation.miofileuploaddb.entity.Veicolo;
 
 public interface IVeicoloService {

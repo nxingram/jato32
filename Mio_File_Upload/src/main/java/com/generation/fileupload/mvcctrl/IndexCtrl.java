@@ -1,4 +1,4 @@
-package com.generation.fileupload.ctrl;
+package com.generation.fileupload.mvcctrl;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

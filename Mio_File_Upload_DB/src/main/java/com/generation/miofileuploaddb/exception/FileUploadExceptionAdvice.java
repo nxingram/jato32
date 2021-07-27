@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
-import com.generation.miofileuploaddb.Dto.MessaggioDto;
+import com.generation.miofileuploaddb.dto.MessaggioDto;
 
 /**
  * classe per gestire eccezioni

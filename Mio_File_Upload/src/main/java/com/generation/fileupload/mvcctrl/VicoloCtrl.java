@@ -1,4 +1,4 @@
-package com.generation.fileupload.ctrl;
+package com.generation.fileupload.mvcctrl;
 
 import java.io.IOException;
 
@@ -26,13 +26,13 @@ import com.generation.fileupload.util.FileUploadUtil;
 public class VicoloCtrl {
 
 	@Autowired
-    private VeicoloService vserv;
+    private VeicoloService _vserv;
 	
 	@PostMapping("/save")
 	public String salvaVeicolo(Veicolo veicolo, @RequestParam("image") MultipartFile multipartFile, Model model) {
 		
 		// salvo il veicolo su database, e l'immagine in una cartella
-		Veicolo veicoloSalvato = vserv.saveVeicolo(veicolo, multipartFile);
+		Veicolo veicoloSalvato = _vserv.saveVeicolo(veicolo, multipartFile);
         
         // si può fare lo stesso percorso con un'api rest, e restituire solo il veicolo senza l'html
         model.addAttribute("veicolo", veicoloSalvato);

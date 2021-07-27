@@ -16,7 +16,7 @@ import com.generation.fileupload.util.FileUploadUtil;
 public class VeicoloService implements IVeicoloService {
 	
 	@Autowired
-    private IVeicoloRepo repo;
+    private IVeicoloRepo _repo;
 	
 	 public Veicolo saveVeicolo(Veicolo veicolo, MultipartFile multipartFile) {
 		
@@ -27,7 +27,7 @@ public class VeicoloService implements IVeicoloService {
 		veicolo.setPhoto(fileName);
 		
 		// salvo il veicolo
-		Veicolo veicoloSalvato = repo.save(veicolo);
+		Veicolo veicoloSalvato = _repo.save(veicolo);
 
 		// percorso della cartella dove salvare l'immagine
 		String uploadDir = CustomProperties.basepath + "/" + veicoloSalvato.getId();

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.generation.miofileuploaddb.Dto.VeicoloDto;
+import com.generation.miofileuploaddb.dto.VeicoloDto;
 import com.generation.miofileuploaddb.entity.Veicolo;
 import com.generation.miofileuploaddb.repo.IVeicoloRepo;
 
@@ -17,7 +17,7 @@ import com.generation.miofileuploaddb.repo.IVeicoloRepo;
 public class VeicoloService implements IVeicoloService {
 
 	@Autowired
-	private IVeicoloRepo repo;
+	private IVeicoloRepo _repo;
 	
 	@Override
 	public Veicolo save(MultipartFile file, VeicoloDto vDto) throws IOException {
@@ -28,17 +28,17 @@ public class VeicoloService implements IVeicoloService {
 		Veicolo veicolo = new Veicolo(vDto.getName(), fileName, file.getContentType(), file.getBytes());
 		
 		// salvo e restituisco il veicolo
-		return repo.save(veicolo);
+		return _repo.save(veicolo);
 	}
 
 	@Override
 	public Veicolo getVeicoloById(int id) {
-		return repo.findById(id).get();
+		return _repo.findById(id).get();
 	}
 
 	@Override
 	public List<Veicolo> getAllVeicoli() {
-		return repo.findAll();
+		return _repo.findAll();
 	}
 
 }

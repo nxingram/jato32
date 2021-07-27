@@ -1,4 +1,4 @@
-package com.generation.miofileuploaddb.Dto;
+package com.generation.miofileuploaddb.dto;
 
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;

@@ -1,4 +1,4 @@
-package com.generation.miofileuploaddb.Dto;
+package com.generation.miofileuploaddb.dto;
 
 public class MessaggioDto {
 

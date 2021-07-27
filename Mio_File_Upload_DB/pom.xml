@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.generation</groupId>
 	<artifactId>miofileuploaddb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>miofileuploaddb</name>
 	<description>file upload to db</description>
 	<properties>

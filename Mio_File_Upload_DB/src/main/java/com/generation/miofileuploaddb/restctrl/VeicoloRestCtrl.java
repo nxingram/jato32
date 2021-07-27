@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.generation.miofileuploaddb.Dto.MessaggioDto;
-import com.generation.miofileuploaddb.Dto.VeicoloDto;
+import com.generation.miofileuploaddb.dto.MessaggioDto;
+import com.generation.miofileuploaddb.dto.VeicoloDto;
 import com.generation.miofileuploaddb.entity.Veicolo;
 import com.generation.miofileuploaddb.service.IVeicoloService;
 
