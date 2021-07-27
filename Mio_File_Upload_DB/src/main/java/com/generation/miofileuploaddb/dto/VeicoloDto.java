@@ -1,10 +1,5 @@
 package com.generation.miofileuploaddb.dto;
 
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import com.generation.miofileuploaddb.entity.Veicolo;
-
 public class VeicoloDto {
 
 	private int id;
@@ -13,17 +8,6 @@ public class VeicoloDto {
 	private String type;
 	private String url;
 	private long size;
-	
-	public VeicoloDto() {
-	}
-
-	public VeicoloDto( String name, String fileName, String type, String url, long size) {
-		this.name = name;
-		this.fileName = fileName;
-		this.type = type;
-		this.url = url;
-		this.size = size;
-	}
 	
 	
 	public int getId() {

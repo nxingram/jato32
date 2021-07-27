@@ -3,7 +3,6 @@ package com.generation.miofileuploaddb.restctrl;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -88,16 +86,22 @@ public class VeicoloRestCtrl {
 					.path(String.valueOf(veicolo.getId()))
 					.toUriString();
 						
-			// creo il VeicoloDto con dentro il percorso del file		
-			return new VeicoloDto(
-					veicolo.getName(), 
-					veicolo.getFileName(), 
-					veicolo.getType(), 
-					fileDownloadUri, 
-					veicolo.getData().length);
-		} ).collect(Collectors.toList());
+			// creo il VeicoloDto con dentro il percorso del file	
+			// per non mandare tutte le immagini che peserebbero troppo!!!
+			VeicoloDto vDto = new VeicoloDto();
+			vDto.setId(veicolo.getId());
+			vDto.setName(veicolo.getName());
+			vDto.setFileName(veicolo.getFileName());
+			vDto.setType(veicolo.getType());
+			vDto.setUrl(fileDownloadUri);
+			vDto.setSize(veicolo.getData().length);
+			
+			// restituisco a map il veicolo mappato sul dto
+			return vDto;
+			
+		} ).collect(Collectors.toList()); // trasforma lo stream map in lista
 		
-		
+		// restituisco la lista dei veicoliDto
 		return ResponseEntity.status(HttpStatus.OK).body(listaVeicoliDto);
 	}
 	
@@ -105,23 +109,36 @@ public class VeicoloRestCtrl {
 	 * Restituisce un veicolo con l'immagine
 	 * @param id del veicolo
 	 * @return veicolo
+	 */
+	@GetMapping("/{id}")
+	public ResponseEntity<Veicolo> getVeicoloById(@PathVariable int id){
+		
+		// prendo il veicolo 
+		Veicolo veicolo = _service.getVeicoloById(id);
+		
+		// restituisco il veicolo con all'interno l'immagine
+		return ResponseEntity.ok().body(veicolo);
+	}
+	
+	/**
+	 * Restituisce l'immagine
+	 * @param id del veicolo
+	 * @return immagine
 	 * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
 	 */
 	@GetMapping("/immagine/{id}")
-//	public ResponseEntity<byte[]> getImmagine(@PathVariable int id){
-	public ResponseEntity<Veicolo> getImmagine(@PathVariable int id){
+	public ResponseEntity<byte[]> downloadImmagine(@PathVariable int id){
 		
 		// prendo il veicolo 
 		Veicolo veicolo = _service.getVeicoloById(id);
 		
 		// restituisco l'immagine del veicolo
-//		return ResponseEntity
-//				.ok()
-//				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + veicolo.getFileName() + "\"") // fa scaricare l'immagine
-//				.body(veicolo.getData());
-		
-		// restituisco il veicolo con all'interno l'immagine
-		return ResponseEntity.ok().body(veicolo);
+		return ResponseEntity
+				.ok()
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + veicolo.getFileName() + "\"") // fa scaricare l'immagine
+				.body(veicolo.getData());
 	}
+	
+	
 	
 }
