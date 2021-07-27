@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.generation</groupId>
 	<artifactId>mioSharing</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>mioSharing</name>
 	<description>vari test</description>
 	<properties>
