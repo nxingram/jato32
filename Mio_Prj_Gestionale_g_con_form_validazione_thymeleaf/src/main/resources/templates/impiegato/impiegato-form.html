@@ -6,6 +6,9 @@
 	<div class="container">	
 		<div th:replace="/components/navbar">navbar.html</div>
 		
+<!-- th:object => permette di scrivere le "nome" senza scrivere "impiegato.nome" -->
+<!-- https://www.thymeleaf.org/doc/tutorials/2.1/thymeleafspring.html#handling-the-command-object -->
+
 		<form method="POST" th:action="@{/mvc/impiegato}" th:object="${impiegato}">
 	      <h2>Aggiungi Nuovo Impiegato</h2>
 	           

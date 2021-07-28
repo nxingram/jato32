@@ -43,23 +43,24 @@ public class ImpiegatoMvcCtrl {
 	 */
 	@GetMapping
 	public String allImpiegati(Model model) {
-//		model.addAttribute("impiegati", _sImpiegato.findAll());
+		model.addAttribute("impiegati", _sImpiegato.findAll());
 		return "/impiegato/impiegato-list";
 	}
 
 	/**
 	 * Aggiunge un impiegato, se non ci sono errori <br>
 	 * methd: POST </br>
-	 * Thymeleaf paragrafi 7-8: https://www.baeldung.com/thymeleaf-in-spring-mvc 
+	 * Thymeleaf paragrafi 7-8 : https://www.baeldung.com/thymeleaf-in-spring-mvc <br>
+	 * \@ModelAttribute  => paragrafo 2.2 =>https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation <br>
+	 * \@ModelAttribute => map your form fields to an object model
 	 * @param imp Impiegato
 	 * @param errors gli errori di validazione
-	 * @return
+	 * @return html thymeleaf
 	 */
 	@PostMapping
 	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, BindingResult errors, Model model) {
-//		model.addAttribute("impiegati", _sImpiegato.findAll());
-//		model.addAttribute("uffici", _sUfficio.findAll());
 		if (errors.hasErrors()) {
+//			model.addAttribute("impiegato", imp);
 			// se ho errori riapro il form e visualizzo gli errori
 			return "/impiegato/impiegato-form";
 		}
@@ -73,13 +74,11 @@ public class ImpiegatoMvcCtrl {
 	
 	/**
 	 * GET: link aggiungi un impiegato, restituisce un form html </br>
-	 * \@ModelAttribute : aggiunge in automatico un attributo "impiegato" = new Impiegato() </br>
-	 * se non si aggiunge l'attributo impiegasto, thymeleaf da errore in th:object="${impiegato}" </br> 
+	 * \@ModelAttribute  => paragrafo 2.2 => https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation </br>
+	 * \@ModelAttribute => map your form fields to an object model
 	 */
 	@GetMapping("/aggiungi")	
 	public String addImpiegatoForm(@ModelAttribute Impiegato imp, Model model) {
-//		model.addAttribute("impiegati", _sImpiegato.findAll());
-//		model.addAttribute("uffici", _sUfficio.findAll());
 		return "/impiegato/impiegato-form";
 	}
 	
@@ -106,7 +105,7 @@ public class ImpiegatoMvcCtrl {
 	
 	/**
 	 * Aggiunge gli attributi a tutti i Model di questo controller <br/>
-	 * paragrafo 2.1: https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation
+	 * \@ModelAttribute => paragrafo 2.1 => https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation <br>
 	 * @param model : da passare alle pagine thymeleaf
 	 */
 	@ModelAttribute
@@ -114,7 +113,6 @@ public class ImpiegatoMvcCtrl {
 		model.addAttribute("impiegati", _sImpiegato.findAll());
 		model.addAttribute("uffici", _sUfficio.findAll());
 	}
-	
 	
 
 	
