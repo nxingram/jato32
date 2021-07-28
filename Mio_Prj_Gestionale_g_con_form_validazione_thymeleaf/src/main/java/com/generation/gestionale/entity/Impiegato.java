@@ -134,10 +134,6 @@ public class Impiegato {
 		this.ordini = ordini;
 	}
 
-	@Override
-	public String toString() {
-		return "Impiegato [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", ruolo=" + ruolo + ", rifTo="
-				+ rifTo + ", stipendio=" + stipendio + ", ufficio=" + ufficio + "]";
-	}
+
 
 }

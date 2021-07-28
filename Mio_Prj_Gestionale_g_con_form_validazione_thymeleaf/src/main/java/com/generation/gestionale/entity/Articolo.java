@@ -106,10 +106,6 @@ public class Articolo {
 		this.ordiniDettaglio = ordiniDettaglio;
 	}
 
-	@Override
-	public String toString() {
-		return "Articolo [id=" + id + ", descrizione=" + descrizione + ", prezzo=" + prezzo + ", categoria=" + categoria
-				+ ", rimanenza=" + rimanenza + "]";
-	}
+
 
 }

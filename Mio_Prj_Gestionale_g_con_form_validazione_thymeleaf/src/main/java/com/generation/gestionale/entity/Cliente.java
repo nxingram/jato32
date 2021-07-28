@@ -129,12 +129,7 @@ public class Cliente {
 	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
 	}
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", telefono=" + telefono + ", email="
-				+ email + ", indirizzo=" + indirizzo + ", citta=" + citta + ", regione=" + regione + ", credito="
-				+ credito + "]";
-	}	
+
 	
 	
 	

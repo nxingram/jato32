@@ -71,10 +71,6 @@ public class Ufficio {
 		this.impiegato = impiegato;
 	}
 
-	@Override
-	public String toString() {
-		return "Ufficio [id=" + id + ", nome=" + nome + ", luogo_id=" + luogo_id + ", impiegato=" + impiegato + "]";
-	}
 
 
 

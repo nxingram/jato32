@@ -92,9 +92,6 @@ public class Ordine {
 		this.ordiniDettaglio = ordiniDettaglio;
 	}
 
-	@Override
-	public String toString() {
-		return "Ordine [id=" + id + ", cliente=" + cliente + ", impiegato=" + impiegato + ", data=" + data + "]";
-	}
+
 
 }

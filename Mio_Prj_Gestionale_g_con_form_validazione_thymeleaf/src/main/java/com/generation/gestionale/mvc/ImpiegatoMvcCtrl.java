@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,7 +56,9 @@ public class ImpiegatoMvcCtrl {
 	 * @return
 	 */
 	@PostMapping
-	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, Errors errors, Model model) {
+	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, BindingResult errors, Model model) {
+//		model.addAttribute("impiegati", _sImpiegato.findAll());
+//		model.addAttribute("uffici", _sUfficio.findAll());
 		if (errors.hasErrors()) {
 			// se ho errori riapro il form e visualizzo gli errori
 			return "/impiegato/impiegato-form";
@@ -75,6 +78,8 @@ public class ImpiegatoMvcCtrl {
 	 */
 	@GetMapping("/aggiungi")	
 	public String addImpiegatoForm(@ModelAttribute Impiegato imp, Model model) {
+//		model.addAttribute("impiegati", _sImpiegato.findAll());
+//		model.addAttribute("uffici", _sUfficio.findAll());
 		return "/impiegato/impiegato-form";
 	}
 	
