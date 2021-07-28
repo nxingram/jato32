@@ -60,7 +60,6 @@ public class ImpiegatoMvcCtrl {
 	@PostMapping
 	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, BindingResult errors, Model model) {
 		if (errors.hasErrors()) {
-//			model.addAttribute("impiegato", imp);
 			// se ho errori riapro il form e visualizzo gli errori
 			return "/impiegato/impiegato-form";
 		}
