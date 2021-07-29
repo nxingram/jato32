@@ -25,4 +25,4 @@ spring.datasource.url=jdbc:mysql://localhost:3306/projectwork
 spring.datasource.username=app_generation
 spring.datasource.password=generation_2021!?
 ```
-vedere esempi nella cartella => [resources](src/main/resources/)
+vedere esempi nella cartella
