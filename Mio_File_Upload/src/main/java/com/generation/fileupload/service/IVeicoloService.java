@@ -7,4 +7,5 @@ import com.generation.fileupload.entity.Veicolo;
 public interface IVeicoloService {
 
 	Veicolo saveVeicolo(Veicolo veicolo, MultipartFile multipartFile);
+	Veicolo saveVeicolo(Veicolo veicolo);
 }

@@ -49,9 +49,12 @@ public class Veicolo {
 	
 	@Transient // non viene salvata su database
     public String getPhotosImagePath() {
-        if (photo == null) return null;
-        
-//        return "/user-photos/" + id + "/" + photo;
+        if (photo == null || photo.equals("")) {
+        	// percorso immagine di default se non è stata caricata
+        	return CustomProperties.defaultImg;        	
+        }
+
+        // percorso immagine caricate
         return "/" + CustomProperties.basepath + "/" + id + "/" + photo;
     }
 

@@ -45,4 +45,9 @@ public class VeicoloService implements IVeicoloService {
 		return veicoloSalvato;
 		
 	}
+
+	@Override
+	public Veicolo saveVeicolo(Veicolo veicolo) {
+		return _repo.save(veicolo);
+	}
 }

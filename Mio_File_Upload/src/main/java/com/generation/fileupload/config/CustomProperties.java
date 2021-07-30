@@ -9,6 +9,9 @@ public class CustomProperties {
 
 	// cartella dove salvare le immagini
 	public static String basepath = "veicoloImg";
+	
+	// immagine di default del veicolo se non è stata caricata
+	public static String defaultImg = "/img/veicoloDefault.jpg";
 
 	
 	
