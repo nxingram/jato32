@@ -28,9 +28,10 @@ public class VicoloCtrl {
 		Veicolo veicoloSalvato = new Veicolo(); // vuoto
 		
 		// controllo se c'è l'immagine
-		if(multipartFile == null || multipartFile.equals("")) {
+		if(multipartFile == null || multipartFile.getOriginalFilename().equals("")) {
 			// non è stata caricata una immagine, salvo comunque il veicolo
 			veicoloSalvato = _vserv.saveVeicolo(veicolo);
+			
 		}else {
 			// salvo il veicolo su database, e l'immagine in una cartella
 			veicoloSalvato = _vserv.saveVeicolo(veicolo, multipartFile);			
