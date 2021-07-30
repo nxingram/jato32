@@ -1,26 +1,26 @@
-# jato32
-##### Eclipse plugin ObjectAid (UML drawing tool)
+# Jato32
+### Eclipse plugin ObjectAid (UML drawing tool)
 - https://www.programmersought.com/article/1129108421/
 
-# XAMPP Errori vari
-###### database mysql corrotto, tabella db
+## XAMPP Errori vari
+### database mysql corrotto, tabella db
 
 1034 - File chiave errato per la tabella : 'db'; prova a riparalo
  
 Controllare stato dellla tabella:
-
+```
 USE mysql;
 CHECK TABLE db;
-
+```
 Se restituisce tabella corrotta, riparala usando
-
+```
 USE mysql;
 REPAIR TABLE db;
 CHECK TABLE db;
-
+```
 Dovresti ottenere lo stato come OK . 
 
-###### XAMPP - MySQL shutdown unexpectedly
+### XAMPP - MySQL shutdown unexpectedly
 
 https://stackoverflow.com/questions/18022809/xampp-mysql-shutdown-unexpectedly
 
