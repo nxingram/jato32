@@ -1,10 +1,10 @@
-package com.generation.miofileuploaddb;
+package com.generation.fileuploadblobdatabase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MioFileUploadDbApplicationTests {
+class FileUploadBlobDatabaseApplicationTests {
 
 	@Test
 	void contextLoads() {

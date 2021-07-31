@@ -1,4 +1,4 @@
-package com.generation.miofileuploaddb.entity;
+package com.generation.fileuploadblobdatabase.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

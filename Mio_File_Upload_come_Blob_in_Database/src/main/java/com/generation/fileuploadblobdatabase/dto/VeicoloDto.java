@@ -1,4 +1,4 @@
-package com.generation.miofileuploaddb.dto;
+package com.generation.fileuploadblobdatabase.dto;
 
 public class VeicoloDto {
 

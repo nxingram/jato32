@@ -1,4 +1,4 @@
-package com.generation.miofileuploaddb.restctrl;
+package com.generation.fileuploadblobdatabase.restctrl;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,13 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.generation.miofileuploaddb.dto.MessaggioDto;
-import com.generation.miofileuploaddb.dto.VeicoloDto;
-import com.generation.miofileuploaddb.entity.Veicolo;
-import com.generation.miofileuploaddb.service.IVeicoloService;
+import com.generation.fileuploadblobdatabase.dto.MessaggioDto;
+import com.generation.fileuploadblobdatabase.dto.VeicoloDto;
+import com.generation.fileuploadblobdatabase.entity.Veicolo;
+import com.generation.fileuploadblobdatabase.service.IVeicoloService;
+
 
 /**
  * https://www.bezkoder.com/spring-boot-upload-file-database/
+ * REST
  */
 @RestController
 @RequestMapping("api/veicolo")
@@ -41,26 +43,26 @@ public class VeicoloRestCtrl {
 	 * @return messaggio
 	 */
 	@PostMapping("/upload")
-	public ResponseEntity<MessaggioDto> uploadVeicolo(
-			@RequestParam("file") MultipartFile file,
-			@RequestParam String name){
+	public ResponseEntity<MessaggioDto> uploadVeicolo(Veicolo veicolo, @RequestParam("file") MultipartFile file){
+		
+		// 1) salvo il veicolo con l'immagine su db
+		// 2) se salvato correttamente, restituisco un messaggio ok
+		// 3) altrimenti restituisco un messaggio di errore
+
 		String message = "";
+		
 		try {
-			// salvo il veicolo con l'immagine su db
-			VeicoloDto vDto = new VeicoloDto();
-			vDto.setName(name);
-			_service.save(file, vDto);			
+			//1
+			_service.save(file, veicolo);			
 			message = "Veicolo salvato correttamente: " + file.getOriginalFilename();
 			
-			// se salvato correttamente il veicolo, restituisco un messaggio
+			//2
 			return ResponseEntity.status(HttpStatus.OK).body(new MessaggioDto(message));
 			
 		} catch (IOException e) {
-
-			e.printStackTrace();
+			e.printStackTrace(); // stampa errore in console java
 			message = "Salvataggio veicolo non ruscito: " + file.getOriginalFilename() + "!";
-
-			// altrimenti restituisco un messaggio di errore
+			//3
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessaggioDto(message));
 		}
 		
@@ -73,21 +75,30 @@ public class VeicoloRestCtrl {
 	@GetMapping("/all")
 	public ResponseEntity<List<VeicoloDto>> getListFiles(){
 		
-		// prendo tutti i veicoli
+		// 1) prendo tutti i veicoli
+		// 2) trasformo una lista di veicoli, in una lista di veicoliDto
+		// (oppure restituire direttamnte la lista, senza mapparlo su un dto => vai direttamente a 6)
+		
+		// 3) genero il percorso per scaricare l'immagine chimando la rotta /files/id
+		// 4) creo il VeicoloDto con dentro il percorso del file,	
+		// per non mandare tutte le immagini che peserebbero troppo 
+		// 5) restituisco a map il veicolo mappato sul dto
+		// 6) restituisco la lista dei veicoliDto
+
+		//1
 		List<Veicolo> listaVeicoli = _service.getAllVeicoli();
 		
-		// trasformo una lista di veicoli, in una lista di veicoliDto
+		//2
 		List<VeicoloDto> listaVeicoliDto = listaVeicoli.stream().map(veicolo -> {
 			
-			// genero il percorso per scaricare l'immagine chimando la rotta /files/id
+			//3
 			String fileDownloadUri = ServletUriComponentsBuilder
 					.fromCurrentContextPath()
-					.path("/api/veicolo/immagine/") // percorso del metodo getImmagine
-					.path(String.valueOf(veicolo.getId()))
+					.path("/api/veicolo/")
+					.path(String.valueOf(veicolo.getId()))  // percorso del metodo getDetattaglioVeicoloById
 					.toUriString();
 						
-			// creo il VeicoloDto con dentro il percorso del file	
-			// per non mandare tutte le immagini che peserebbero troppo!!!
+			//4
 			VeicoloDto vDto = new VeicoloDto();
 			vDto.setId(veicolo.getId());
 			vDto.setName(veicolo.getName());
@@ -96,27 +107,28 @@ public class VeicoloRestCtrl {
 			vDto.setUrl(fileDownloadUri);
 			vDto.setSize(veicolo.getData().length);
 			
-			// restituisco a map il veicolo mappato sul dto
+			//5
 			return vDto;
 			
 		} ).collect(Collectors.toList()); // trasforma lo stream map in lista
 		
-		// restituisco la lista dei veicoliDto
+		//6
 		return ResponseEntity.status(HttpStatus.OK).body(listaVeicoliDto);
 	}
 	
 	/**
-	 * Restituisce un veicolo con l'immagine
+	 * Restituisce Dettaglio del veicolo con l'immagine
 	 * @param id del veicolo
 	 * @return veicolo
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<Veicolo> getVeicoloById(@PathVariable int id){
+	public ResponseEntity<Veicolo> getDetattaglioVeicoloById(@PathVariable int id){
+		// 1) prendo il veicolo 
+		// 2) restituisco il veicolo con all'interno l'immagine
 		
-		// prendo il veicolo 
-		Veicolo veicolo = _service.getVeicoloById(id);
-		
-		// restituisco il veicolo con all'interno l'immagine
+		//1
+		Veicolo veicolo = _service.getVeicoloById(id);		
+		//2
 		return ResponseEntity.ok().body(veicolo);
 	}
 	
@@ -128,11 +140,12 @@ public class VeicoloRestCtrl {
 	 */
 	@GetMapping("/immagine/{id}")
 	public ResponseEntity<byte[]> downloadImmagine(@PathVariable int id){
+		// 1) prendo il veicolo 
+		// 2) restituisco l'immagine del veicolo
 		
-		// prendo il veicolo 
-		Veicolo veicolo = _service.getVeicoloById(id);
-		
-		// restituisco l'immagine del veicolo
+		//1
+		Veicolo veicolo = _service.getVeicoloById(id);		
+		//2
 		return ResponseEntity
 				.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + veicolo.getFileName() + "\"") // fa scaricare l'immagine
