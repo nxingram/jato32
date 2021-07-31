@@ -31,6 +31,9 @@ hs_err_pid*
 #java test files -> bug
 *attach_pid*
 
+### VS Code ###
+.vscode/
+
 # ProjectWork finale
 G1*
 G2*
