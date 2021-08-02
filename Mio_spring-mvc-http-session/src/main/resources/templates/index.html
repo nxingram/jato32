@@ -14,9 +14,12 @@
 		<div th:if="${user!=null && user.name!=null}" class="mb-4">
 			<h3>Utente Loggato</h3>
 			<p>
-				Nome: <span th:text="${user.name}"></span><br> 
-				Email: <span th:text="${user.name}"></span>
+				Nome: <b><span th:text="${user.name}"></span></b><br> 
+				Email: <b><span th:text="${user.email}"></span></b>
 			</p>
+		</div>		
+		<div class="mb-4">
+			Prova a loggarti da due browsers diversi
 		</div>
 		<div class="mb-4">
 			<a href="/loginpage" class="btn btn-primary">Login</a>

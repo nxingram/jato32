@@ -17,11 +17,20 @@ public class IndexCtrl {
 	// 2) N.B:  Model model: serve solo per debuggare 
 	// e vedere quando lo user viene caricato o rimosso dalla sessione
 	// nelle variabili di debug vedrai una chiave: user
-	// e l'istanza di User con i dati.
-	// Provare a fare login con 2 browsers diversi
+	// e l'istanza di User con i dati
+	
+
 	
 	@RequestMapping("/")
-	public String base(Model model) { //2
+	public String base(User user, Model model) { //2
+		
+		// 3) se email è diversa da null, faccio toUppercase
+		// 4) i valori arrivano dal /login di UserCtrl, altrim sono null
+		
+		if(user.getEmail() != null) { //3
+			user.setEmail(user.getEmail().toLowerCase()); //4		
+		}
+		
 		return "index";
 	}
 }
