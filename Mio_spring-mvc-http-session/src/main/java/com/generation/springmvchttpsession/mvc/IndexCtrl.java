@@ -25,7 +25,7 @@ public class IndexCtrl {
 	public String base(User user, Model model) { //2
 		
 		// 3) se email è diversa da null, faccio toUppercase
-		// 4) i valori arrivano dal /login di UserCtrl, altrim sono null
+		// 4) i valori arrivano dal /login di UserCtrl, altrimenti sono null
 		
 		if(user.getEmail() != null) { //3
 			user.setEmail(user.getEmail().toLowerCase()); //4		

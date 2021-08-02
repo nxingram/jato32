@@ -23,22 +23,23 @@ public class UserCtrl {
 	// e l'istanza di User con i dati
 		
 	@GetMapping("/loginpage")
-	public String loginpage(Model model) {
+	public String loginpage(Model model) {//2
 		return "login";
 	}
 	
 	@PostMapping("/login")
-	public String login(User user, Model model) { //2
+	public String login(User user, Model model) { //1 //2
 		
 		user.setName(user.getName().toUpperCase());
 		return "redirect:/";
 	}
 	
 	@GetMapping("/logout")
-	public String logout(SessionStatus status, Model model) {
-		// 2) cancello la sessione, e con esso l'utente salvato
+	public String logout(SessionStatus status, Model model) {//2
 		
-		//2
+		// 3) cancello la sessione, e con esso l'utente salvato
+		
+		//3
 		status.setComplete();
 		return "redirect:/";
 	}
