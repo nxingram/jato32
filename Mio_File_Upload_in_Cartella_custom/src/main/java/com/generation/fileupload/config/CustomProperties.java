@@ -11,7 +11,7 @@ public class CustomProperties {
 	public static String basepath = "veicoloimg";
 	
 	// immagine di default del veicolo se non è stata caricata
-	public static String defaultImg = "/img/veicoloDefault.jpg";
+	public static String defaultImg = "img/veicoloDefault.jpg";
 
 	
 	

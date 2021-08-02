@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
  
  
-	// rende visibile dall'esterno la cartella delle photografie, se il percorso è corretto
+	// rende visibile dall'esterno la cartella delle fotografie, se il percorso è corretto
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         exposeDirectory(CustomProperties.basepath, registry);

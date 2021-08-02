@@ -21,23 +21,30 @@ import com.generation.fileupload.service.VeicoloService;
 public class VicoloCtrl {
 
 	@Autowired
-    private VeicoloService _vserv;
+    private VeicoloService _serv;
 	
 	@PostMapping("/save")
 	public String salvaVeicolo(Veicolo veicolo, @RequestParam("image") MultipartFile multipartFile, Model model) {
+		// 1) creo un veicolo vuoto da restituire (con l'id)
+		// 2) controllo se è stata caricata un'immagine
+		// 3) non è stata caricata una immagine, salvo comunque il veicolo
+		// 4) altrim salvo il veicolo su database, e l'immagine in una cartella
+		// 5) si può fare lo stesso percorso con un'api rest, e restituire solo il veicolo senza l'html
+
+		//1
 		Veicolo veicoloSalvato = new Veicolo(); // vuoto
 		
-		// controllo se c'è l'immagine
+		//2
 		if(multipartFile == null || multipartFile.isEmpty()) {
-			// non è stata caricata una immagine, salvo comunque il veicolo
-			veicoloSalvato = _vserv.saveVeicolo(veicolo);
+			//3
+			veicoloSalvato = _serv.saveVeicolo(veicolo);
 			
 		}else {
-			// salvo il veicolo su database, e l'immagine in una cartella
-			veicoloSalvato = _vserv.saveVeicolo(veicolo, multipartFile);			
+			//4
+			veicoloSalvato = _serv.saveVeicolo(veicolo, multipartFile);			
 		}
         
-        // si può fare lo stesso percorso con un'api rest, e restituire solo il veicolo senza l'html
+        //5
         model.addAttribute("veicolo", veicoloSalvato);
         
 		return "file-salvato";

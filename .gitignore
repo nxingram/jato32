@@ -41,6 +41,8 @@ G3*
 G4*
 G5*
 
-# varie
-Mio_session-attributes*
-Mio_File_Upload/veicoloimg/*
+# my folders
+*/veicoloimg/*
+
+# my projects
+Mio_*session*

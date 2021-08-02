@@ -19,29 +19,35 @@ public class VeicoloService implements IVeicoloService {
     private IVeicoloRepo _repo;
 	
 	 public Veicolo saveVeicolo(Veicolo veicolo, MultipartFile multipartFile) {
+		 
+		 // 1) nome del file o immagine
+		 // 2) setto nome del file prima di salvare il veicolo
+		 // 3) salvo il veicolo
+		 // 4) genero il percorso della cartella dove salvare l'immagine
+		 // 5) classe utility con metodo statico che salva il file
+		 // 6) restituisco il veicolo salvato
 		
-		// nome del file
+		//1
 		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
 		
-		// setto nome del file prima di salvare il veicolo
+		//2
 		veicolo.setPhoto(fileName);
 		
-		// salvo il veicolo
+		//3
 		Veicolo veicoloSalvato = _repo.save(veicolo);
 
-		// percorso della cartella dove salvare l'immagine
+		//4
 		String uploadDir = CustomProperties.basepath + "/" + veicoloSalvato.getId();
 		 
         try {
-        	// classe util con metodo statico che salva il file
+        	//5
 			FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
         
-        // restituisce il path uri del file img
-        System.out.println(veicoloSalvato.getPhotosImagePath());
-        
+
+        //6
 		return veicoloSalvato;
 		
 	}
