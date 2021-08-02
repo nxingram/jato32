@@ -1,3 +1,6 @@
 # Spring Mvc Http Session
-salvare dati utente o altro in una sessione in un controller lato server,
-e ripescarli in un altro controller
+Salvare dati utente (o altro) 
+in una variabile di sessione 
+accessibile da uno o più controller
+
+Attenzione! questa Sessione è lato server (non client/browser!)
