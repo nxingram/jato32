@@ -10,8 +10,8 @@
 	</parent>
 	<groupId>com.generation</groupId>
 	<artifactId>spring-mvc-http-session</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-mvc-http-session</name>
+	<version>0.0.1</version>
+	<name>Mio_spring-mvc-http-session</name>
 	<description>Spring Boot MVC Http Session example</description>
 	<properties>
 		<java.version>11</java.version>

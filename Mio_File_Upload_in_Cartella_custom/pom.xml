@@ -11,8 +11,8 @@
 	<groupId>com.generation</groupId>
 	<artifactId>fileUpload</artifactId>
 	<version>0.0.1</version>
-	<name>mio file upload</name>
-	<description>vari test</description>
+	<name>Mio_File_Upload_in_Cartella_custom</name>
+	<description>generic file upload</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

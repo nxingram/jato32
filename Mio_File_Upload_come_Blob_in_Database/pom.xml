@@ -12,7 +12,7 @@
 	<groupId>com.generation</groupId>
 	<artifactId>file-upload-blob-database</artifactId>
 	<version>0.0.1</version>
-	<name>file-upload-blob-database</name>
+	<name>Mio_File_Upload_come_Blob_in_Database</name>
 	<description>File Upload come Blob in Database</description>
 	<properties>
 		<java.version>11</java.version>

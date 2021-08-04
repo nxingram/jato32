@@ -6,13 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.generation.gestionale.entity.Impiegato;
 import com.generation.gestionale.service.iservice.IImpiegatoService;
@@ -33,51 +31,44 @@ public class ImpiegatoMvcCtrl {
 	@Autowired
 	private IUfficioService _sUfficio;
 
-	/**
-	 * Tutti gli impiegati <br>
-	 * method: GET <br>
-	 * lista impiegati viene aggiunta nel model dal metodo addModelAttributes()</br>
-	 * Thymeleaf paragrafo 5.2: https://www.baeldung.com/thymeleaf-in-spring-mvc 
-	 * @param model con la lista
-	 * @return html thymeleaf
-	 */
+
 	@GetMapping
-	public String allImpiegati(Model model) {
-		model.addAttribute("impiegati", _sImpiegato.findAll());
+	public String allImpiegati(Model model) { //1
+		// 1) Model model => non necessario, usato solo per visualizzare in debug il contenuto di model
+		// lista impiegati già presente nel model,
+		// caricata dal metodo addModelAttributes() per tutti i metodi del controller
+		
 		return "/impiegato/impiegato-list";
 	}
 
-	/**
-	 * Aggiunge un impiegato, se non ci sono errori <br>
-	 * methd: POST </br>
-	 * Thymeleaf paragrafi 7-8 : https://www.baeldung.com/thymeleaf-in-spring-mvc <br>
-	 * \@ModelAttribute  => paragrafo 2.2 =>https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation <br>
-	 * \@ModelAttribute => map your form fields to an object model
-	 * @param imp Impiegato
-	 * @param errors gli errori di validazione
-	 * @return html thymeleaf
-	 */
+
 	@PostMapping
-	public String addImpiegato(@Valid @ModelAttribute Impiegato imp, BindingResult errors, Model model) {
-		if (errors.hasErrors()) {
-			// se ho errori riapro il form e visualizzo gli errori
+	public String addImpiegato(@Valid Impiegato imp, BindingResult errors, Model model) {
+		// 1) controllo se ci sono errori di validazione
+		// il controllo avviene treamite l'annotazione @Valid
+		// e le annotazioni sulle proprietà nell'entity Impiegato
+		// 2) se ho errori riapro il form e visualizzo gli errori
+		// 3) a Non ho errori, salvo l'impiegato
+		// 4) redireziono a lista impiegati
+		
+		if (errors.hasErrors()) { //1
+			// 2
 			return "/impiegato/impiegato-form";
 		}
 
-		// salvo l'impiegato
+		//3
 		_sImpiegato.addOne(imp);
 
-		// rotta get impiegato mvc
+		//4
 		return "redirect:/mvc/impiegato";
 	}
 	
-	/**
-	 * GET: link aggiungi un impiegato, restituisce un form html </br>
-	 * \@ModelAttribute  => paragrafo 2.2 => https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation </br>
-	 * \@ModelAttribute => map your form fields to an object model
-	 */
+
 	@GetMapping("/aggiungi")	
-	public String addImpiegatoForm(@ModelAttribute Impiegato imp, Model model) {
+	public String addImpiegatoForm(Impiegato imp, Model model) {//1 //2
+		// 1) Impiegato imp => usato da thymeleaf, aggiunto automaticamente al model con nomeVariabile = "impiegato"
+		// 2) Model model => non necessario, usato solo per visualizzare in debug il contenuto di  model 
+		
 		return "/impiegato/impiegato-form";
 	}
 	
@@ -87,28 +78,43 @@ public class ImpiegatoMvcCtrl {
 	 * @return pagina di messaggio: errore o cancellato correttamente
 	 */
 	@GetMapping("/delete/{id}")
-	public String delImpiegato(@PathVariable Integer id, Model model) {
-		// cerco se impiegato è presente su db
+	public String delImpiegato(@PathVariable Integer id, Model model) {//1 //2
+		// 1) id impiegato da cancellare preso dal path url
+		// 2) Model model => non necessario, usato solo per visualizzare in debug il contenuto di  model 
+		// 3) cerco se impiegato è presente su db
+		// 4) se impiegato id non esiste
+		// 5) restituisco messaggio di errore
+		// 6) se c'è su database, allora lo cancello
+		// 7) restituisco messaggio di successo
+		// 8) pagina comune per visualizzazione di messaggi
+		
+		//3
 		var imp = _sImpiegato.findByID(id);
-		if(imp == null) { 
-			// impiegato id non esiste
+		
+		if(imp == null) { //4			
+			//5
 			model.addAttribute("message", "Impiegato non presentre su database");
+			
 		}else {
-			// esiste, cancello
-			_sImpiegato.delImpiegato(imp);			
+			//6
+			_sImpiegato.delImpiegato(imp);	
+			
+			//7
 			model.addAttribute("message", "Impiegato cancellato correttamente");
 		}
 		
+		//8
 		return "/common/message";
 	}
 	
 	/**
-	 * Aggiunge gli attributi a tutti i Model di questo controller <br/>
 	 * \@ModelAttribute => paragrafo 2.1 => https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation <br>
-	 * @param model : da passare alle pagine thymeleaf
 	 */
-	@ModelAttribute
+	@ModelAttribute //1
 	public void addModelAttributes(Model model) {
+		// 1) carica automaticamente nel model gli attributi (2) per tutti i metodi di questo controller
+		
+		//2
 		model.addAttribute("impiegati", _sImpiegato.findAll());
 		model.addAttribute("uffici", _sUfficio.findAll());
 	}

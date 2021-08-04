@@ -11,7 +11,7 @@
 	<groupId>com.generation</groupId>
 	<artifactId>gestionale</artifactId>
 	<version>0.0.1</version>
-	<name>Mio_Prj_Gestionale_g</name>
+	<name>Mio_Gestionale_g_con_form_validazione_thymeleaf</name>
 	<description>form thymeleaf</description>
 	<properties>
 		<java.version>11</java.version>
