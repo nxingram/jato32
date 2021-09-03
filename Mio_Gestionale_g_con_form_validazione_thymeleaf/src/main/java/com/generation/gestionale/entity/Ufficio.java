@@ -70,8 +70,5 @@ public class Ufficio {
 	public void setImpiegato(List<Impiegato> impiegato) {
 		this.impiegato = impiegato;
 	}
-
-
-
-
+	
 }

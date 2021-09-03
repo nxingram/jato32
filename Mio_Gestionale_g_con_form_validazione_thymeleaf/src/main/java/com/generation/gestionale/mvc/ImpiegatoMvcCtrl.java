@@ -3,6 +3,7 @@ package com.generation.gestionale.mvc;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -57,18 +58,29 @@ public class ImpiegatoMvcCtrl {
 		}
 
 		//3
-		_sImpiegato.addOne(imp);
+		_sImpiegato.save(imp);
 
 		//4
 		return "redirect:/mvc/impiegato";
 	}
 	
 
-	@GetMapping("/aggiungi")	
+	@GetMapping(value = "/aggiungi")	
 	public String addImpiegatoForm(Impiegato imp, Model model) {//1 //2
 		// 1) Impiegato imp => usato da thymeleaf, aggiunto automaticamente al model con nomeVariabile = "impiegato"
 		// 2) Model model => non necessario, usato solo per visualizzare in debug il contenuto di  model 
 		
+		return "/impiegato/impiegato-form";
+	}
+	
+	@GetMapping(value = "/modifica/{id}")	
+	public String addImpiegatoForm(@PathVariable Integer id, Model model) {//1 //2
+		// 1) Id impiegato da modificare
+		// 2) Model model => dati da visualizzare nella pagina thymeleaf
+		// 3) recupero l'impiegato tramite id e lo aggiungo al model 
+		
+		//3
+		model.addAttribute("impiegato", _sImpiegato.findByID(id));
 		return "/impiegato/impiegato-form";
 	}
 	
@@ -86,7 +98,8 @@ public class ImpiegatoMvcCtrl {
 		// 5) restituisco messaggio di errore
 		// 6) se c'è su database, allora lo cancello
 		// 7) restituisco messaggio di successo
-		// 8) pagina comune per visualizzazione di messaggi
+		// 8) errore cancellazione utente, causato da foreign key constraint
+		// 9) pagina comune per visualizzazione di messaggi
 		
 		//3
 		var imp = _sImpiegato.findByID(id);
@@ -96,14 +109,25 @@ public class ImpiegatoMvcCtrl {
 			model.addAttribute("message", "Impiegato non presentre su database");
 			
 		}else {
-			//6
-			_sImpiegato.delImpiegato(imp);	
+			try {
+				//6
+				_sImpiegato.delImpiegato(imp);
+				
+				//7
+				model.addAttribute("message", "Impiegato cancellato correttamente");
+				
+			} catch (DataIntegrityViolationException e) {
+				//8
+				model.addAttribute("message", "Non è possibile cancellare l'impiegato, controllare referenti collegati");
+				
+				e.printStackTrace();
+			}	
 			
-			//7
-			model.addAttribute("message", "Impiegato cancellato correttamente");
+			
+			
 		}
 		
-		//8
+		//9
 		return "/common/message";
 	}
 	

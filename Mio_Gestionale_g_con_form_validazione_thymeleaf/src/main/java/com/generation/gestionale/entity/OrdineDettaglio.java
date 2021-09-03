@@ -74,11 +74,7 @@ public class OrdineDettaglio {
 
 	public void setQuantita(Short quantita) {
 		this.quantita = quantita;
-	}
-
-
-
-	
+	}	
 	
 
 }

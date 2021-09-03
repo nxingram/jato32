@@ -16,7 +16,9 @@
 	        Correggere gli errori e reinviare.
 	        </span>
 	      </div>
-
+	      
+	      <input type="text" th:field="*{id}" hidden class="form-control"/>
+	      
 	      <label for="nome" class="form-label">Nome: </label>
 	      <input type="text" th:field="*{nome}" class="form-control"/>
 	      <span class="alert-danger"
@@ -65,7 +67,7 @@
 	      </select>
 	      
 	      <br/><br/>	      
-	      <input type="submit" value="Aggiungi" class="btn btn-primary"/>
+	      <input type="submit" value="Salva" class="btn btn-primary"/>
 	    </form>
     </div>
 

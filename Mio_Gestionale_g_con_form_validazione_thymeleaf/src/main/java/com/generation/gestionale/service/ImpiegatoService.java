@@ -22,7 +22,7 @@ public class ImpiegatoService implements IImpiegatoService {
 	}
 
 	@Override
-	public Impiegato addOne(Impiegato i) {
+	public Impiegato save(Impiegato i) {
 		return _rImpiegato.save(i);
 	}
 	

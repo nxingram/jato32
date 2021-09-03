@@ -27,6 +27,8 @@
 							th:text="${imp.rifTo.cognome}+' '+${imp.rifTo.nome}"></span>
 					</p>
 
+					<a th:href="@{'/mvc/impiegato/modifica/' + ${imp.id}}"
+						class="btn btn-primary">Modifica</a>
 					<a th:href="@{'/mvc/impiegato/delete/' + ${imp.id}}"
 						class="btn btn-danger">Elimina</a>
 				</div>

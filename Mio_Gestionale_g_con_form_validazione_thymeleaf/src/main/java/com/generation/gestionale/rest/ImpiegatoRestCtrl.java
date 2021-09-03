@@ -43,7 +43,7 @@ public class ImpiegatoRestCtrl {
 		
 		
 		// salvo nuovo utente e lo restituisco via json
-		return _sImpiegato.addOne(i);
+		return _sImpiegato.save(i);
 	}
 	
 	@GetMapping("")
